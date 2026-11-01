@@ -49,6 +49,27 @@ The goal of this project was to evaluate how preprocessing pipelines and hyperpa
 
 ---
 
+
+## Results
+
+The original dataset contained 614 loan applications. After removing records with missing values, 480 observations remained for modeling.
+
+Three classification approaches were evaluated using an 80/20 train/test split.
+
+| Model | Test Accuracy |
+|---|---:|
+| Default KNN | 78.12% |
+| Tuned KNN (3 neighbors) | 79.17% |
+| Selected Logistic Regression (C = 10) | 82.29% |
+
+The initial KNN pipeline combined MinMaxScaler with KNeighborsClassifier. Five-fold cross-validation identified three neighbors as the preferred setting among the values tested.
+
+An expanded GridSearchCV subsequently compared KNN, Logistic Regression, and Random Forest using several hyperparameter combinations. Logistic Regression with C = 10 was selected through cross-validation and achieved the highest observed test accuracy.
+
+These results demonstrate that hyperparameter tuning can improve performance, but comparing different algorithms may be more valuable than tuning a single classifier alone.
+
+---
+
 ## Key Findings
 
 - Machine learning pipelines simplified preprocessing and modeling workflows by combining scaling and classification into a single reusable structure.
